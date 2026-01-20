@@ -8,7 +8,7 @@ venv/
 .env/
 
 # Logs
-logs/*.log
+
 
 # Test artifacts
 .pytest_cache/
