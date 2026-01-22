@@ -38,4 +38,5 @@ jobs:
 
       - name: Run log analyzer
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           python src/log_analyzer.py
