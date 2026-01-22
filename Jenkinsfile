@@ -27,6 +27,11 @@ pipeline {
             steps {
                 sh '''
                     export PYTHONPATH=$(pwd)
+
+                    mkdir -p logs
+                    echo "INFO Application started" > logs/app.log
+                    echo "WARNING Disk space low" >> logs/app.log
+                    echo "ERROR Failed to connect to DB" >> logs/app.log
                     python3 src/log_analyzer.py
                 '''
             }
