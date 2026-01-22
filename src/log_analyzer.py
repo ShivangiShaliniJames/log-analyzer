@@ -1,5 +1,5 @@
 import os
-from analyzer import count_log_levels
+from src.analyzer import count_log_levels
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 log_dir = os.path.join(BASE_DIR, "logs")
