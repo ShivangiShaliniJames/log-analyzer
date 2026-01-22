@@ -1,25 +1,14 @@
-def analyze_log(file_path):
-    counts = {
-        "INFO": 0,
-        "WARNING": 0,
-        "ERROR": 0
-    }
+import os
+from analyzer import count_log_levels
 
-    try:
-        with open(file_path, "r") as file:
-            for line in file:
-                for level in counts:
-                    if line.startswith(level):
-                        counts[level] += 1
-    except FileNotFoundError:
-        print("Log file not found.")
-        return
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+file_path = os.path.join(BASE_DIR, "logs", "app.log")
 
-    print("Log Analysis Report")
-    print("-------------------")
-    for level, count in counts.items():
-        print(f"{level}: {count}")
+with open(file_path, "r") as file:
+    logs = file.readlines()
 
+result = count_log_levels(logs)
 
-if __name__ == "__main__":
-    analyze_log("logs/sample.log")
+print("Log Summary:")
+for level, count in result.items():
+    print(f"{level}: {count}")
