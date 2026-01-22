@@ -14,18 +14,21 @@ pipeline {
             }
         }
 
-        stage('Run Unit Tests') {
+       stage('Run Unit Tests') {
             steps {
                 sh '''
-            python3 -m pytest
-        '''
-
-            }
-        }
+                    export PYTHONPATH=$(pwd)
+                    python3 -m pytest
+                '''
+    }
+}
 
         stage('Run Log Analyzer') {
             steps {
-                sh 'python3 src/log_analyzer.py'
+                sh '''
+                    export PYTHONPATH=$(pwd)
+                    python3 src/log_analyzer.py
+                '''
             }
         }
     }
