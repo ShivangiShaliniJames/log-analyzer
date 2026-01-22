@@ -27,7 +27,7 @@ jobs:
       - name: Run unit tests
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)
-          pytest
+          python3 -m pytest
 
       - name: Create sample log file
         run: |
